@@ -5,7 +5,6 @@ import com.project.food.infrastructure.database.entity.AddressEntity;
 import com.project.food.infrastructure.database.entity.RestaurantEntity;
 import com.project.food.infrastructure.database.entity.UserEntity;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface RestaurantService {
@@ -15,7 +14,7 @@ public interface RestaurantService {
 
     List<RestaurantEntity> findAll();
 
-    RestaurantEntity findById(Long restaurantId) throws FileNotFoundException;
+    RestaurantEntity findById(Long restaurantId);
 
     RestaurantEntity findByName(String name);
 

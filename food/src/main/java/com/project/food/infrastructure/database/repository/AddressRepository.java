@@ -23,6 +23,7 @@ public class AddressRepository {
                 addressDTO.getPostalCode()
         );
     }
+
     public Integer getExistedAddress(RestaurantDTO addressDTO) {
         return addressJpaRepository.findByCityAndPostalCodeAndStreetAndCountry(
                 addressDTO.getCity(),
@@ -32,9 +33,10 @@ public class AddressRepository {
         );
     }
 
-    public AddressEntity getAddressById(Integer address_id){
+    public AddressEntity getAddressById(Integer address_id) {
         return addressJpaRepository.getReferenceById(address_id);
     }
+
     public void save(AddressEntity address) {
         addressJpaRepository.save(address);
     }

@@ -5,7 +5,6 @@ import com.project.food.infrastructure.database.entity.CategoryEntity;
 import com.project.food.infrastructure.database.entity.DishEntity;
 import com.project.food.infrastructure.database.entity.RestaurantEntity;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface DishService {
@@ -13,7 +12,7 @@ public interface DishService {
 
     void saveCategory(DishDTO dishDTO);
 
-    DishEntity findById(Long dishId) throws FileNotFoundException;
+    DishEntity findById(Long dishId);
 
     CategoryEntity assignCategory(DishDTO dishDTO);
 

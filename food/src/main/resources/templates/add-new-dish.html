@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add new dish</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="add-new-dish" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+        #container
+ {
+     width:  1000px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ #header
+ {
+     background-color: #fac434;
+     color: coral;
+     text-align: center;
+     padding: 15px;
+     max-height: 70px;
+ }
+ #main-content
+ {
+     color: red;
+     background-color:#cec4ac;
+     text-align: center;
+     padding: 10px;
+     min-height: 650px;
+ }
+ #footer
+ {
+     background-color:#fac434;
+     color: coral;
+     text-align: center;
+     min-height: 50px;
+     padding: 10px;
+ }
+ #logo
+ {
+      clear:both;
+ }
+
+  #h1
+ {
+     float:left;
+     display:flex;
+     text-align: center;
+ }
+
+ img
+ {
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     padding: 5px;
+     width: 60px;
+ }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <div id="h1">
+            <h1>Mniam-Mniam : Adding new dish</h1>
+        </div>
+        <a href="/dashboard">
+            <img src="/img/logo.png" alt="none" style="margin-right:12px">
+        </a>
+    </div>
+    <div id="main-content">
+        <br /><br /><br />
+        <div class="container">
+            <div class="row col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Adding new dish</h2>
+                    </div>
+                    <div th:if="${param.success}">
+                        <div class="alert alert-info">
+                            You have successfully add new dish!
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form
+                                method="post"
+                                role="form"
+                                th:action="@{/add-new-dish/save}"
+                                th:object="${dish}"
+                        >
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="form-label">Name</label>
+                                    <input
+                                            class="form-control"
+                                            id="name"
+                                            name="name"
+                                            placeholder="Enter name"
+                                            th:field="*{name}"
+                                            type="text"
+                                    />
+                                    <p th:errors = "*{name}" class="text-danger"
+                                       th:if="${#fields.hasErrors('name')}"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <label class="form-label">Price</label>
+                                        <input
+                                                class="form-control"
+                                                id="price"
+                                                name="price"
+                                                placeholder="Enter price"
+                                                th:field="*{price}"
+                                                type="number"
+                                                step=".01"
+                                        />
+                                        <p th:errors = "*{price}" class="number-danger"
+                                           th:if="${#fields.hasErrors('price')}"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-auto">
+                                    <label class="form-label">Description</label>
+                                    <input
+                                            class="form-control"
+                                            id="description"
+                                            name="description"
+                                            placeholder="Enter description"
+                                            th:field="*{description}"
+                                            type="text"
+                                    />
+                                    <p th:errors = "*{description}" class="text-danger"
+                                       th:if="${#fields.hasErrors('description')}"></p>
+                                </div>
+                                    <input
+                                            class="form-control"
+                                            id="restaurantId"
+                                            name="restaurantId"
+                                            th:value="${restaurant}"
+                                            type="hidden"
+                                    />
+                            </div>
+
+                            <div class="form-group col-auto">
+                                <label class="form-label">Image</label>
+                                <input type="file"
+                                       accept="image/png, image/jpeg"
+                                       class="form-control-file"
+                                        id="img"
+                                        name="img"
+                                        placeholder="Enter image src"
+                                        th:field="*{img}"
+                                        width="48"
+                                        height="48"
+                                />
+                                <p th:errors = "*{img}" class="image-danger"
+                                   th:if="${#fields.hasErrors('img')}"></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-auto">
+                                    <label class="form-label">Category</label>
+                                    <select
+                                            class="form-control"
+                                            id="categoryName"
+                                            name="categoryName"
+                                            placeholder="Choose category"
+                                            th:field="*{categoryName}">
+                                        <option th:value="'Włoskie'" th:text="Włoskie" selected></option>
+                                        <option th:value="'Azjatyckie'" th:text="Azjatyckie"></option>
+                                        <option th:value="'Blisko-wschodnie'" th:text="Blisko-wschodnie"></option>
+                                        <option th:value="'Amerykańskie'" th:text="Amerykańskie"></option>
+                                        <option th:value="'Gruzińskie'" th:text="Gruzińskie"></option>
+                                        <option th:value="'Indyjskie'" th:text="Indyjskie"></option>
+                                        <option th:value="'Kuchnia-Polska'" th:text="Kuchnia-Polska"></option>
+                                    </select>
+                                    <p th:errors = "*{categoryName}" class="text-danger"
+                                       th:if="${#fields.hasErrors('categoryName')}"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <h3>Footer of our application</h3>
+    </div>
+</div>
+</body>
+
+</html>

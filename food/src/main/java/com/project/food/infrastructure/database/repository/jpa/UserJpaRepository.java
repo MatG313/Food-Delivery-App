@@ -13,7 +13,9 @@ import java.util.List;
 public interface UserJpaRepository extends JpaRepository<UserEntity, Integer> {
 
     UserEntity findByEmail(String email);
+
     List<UserEntity> findByRole(Integer role);
+
     @Query("SELECT u.restaurants FROM UserEntity u WHERE u.userId = :userId")
     List<RestaurantEntity> findRestaurantsByUserId(@Param("userId") Long userId);
 }

@@ -12,10 +12,8 @@ import com.project.food.infrastructure.database.repository.RestaurantRepository;
 import com.project.food.infrastructure.database.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 @Slf4j
