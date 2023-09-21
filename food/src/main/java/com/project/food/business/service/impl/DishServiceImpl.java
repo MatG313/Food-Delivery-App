@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 @Slf4j
@@ -34,7 +33,7 @@ public class DishServiceImpl implements DishService {
                 .categoryId(dishDTO.getCategoryId())
                 .description(dishDTO.getDescription())
                 .restaurantId(dishDTO.getRestaurantId())
-                .img(dishDTO.getImg() )
+                .img(dishDTO.getImg())
                 .build();
         dishRepository.save(dish, category, restaurant);
     }
@@ -68,7 +67,7 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<DishEntity> getDishesByRestaurant(Long restaurantId){
+    public List<DishEntity> getDishesByRestaurant(Long restaurantId) {
         return dishRepository.getDishesByRestaurant(restaurantId);
     }
 

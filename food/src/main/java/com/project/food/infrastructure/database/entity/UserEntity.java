@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "userId")
-@ToString(of = {"userId", "name", "surname", "email", "password","restaurants", "phone", "role"})
+@ToString(of = {"userId", "name", "surname", "email", "password", "restaurants", "phone", "role"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

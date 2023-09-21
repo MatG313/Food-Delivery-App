@@ -17,8 +17,8 @@ public class UserRepository {
     private final AddressRepository addressRepository;
     private final RoleRepository roleRepository;
 
-    public void save(User user, AddressEntity address){
-        UserEntity userEntity= UserEntity.builder()
+    public void save(User user, AddressEntity address) {
+        UserEntity userEntity = UserEntity.builder()
                 .userId(user.getUserId())
                 .name(user.getName())
                 .surname(user.getSurname())

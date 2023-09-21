@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>register-restaurant</title>
+<meta charset="utf-8" />
+<meta name="description" content="register-restaurant" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<style>
+    #container
+  {
+      width:  1000px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  #header
+  {
+      background-color: #fac434;
+      color: coral;
+      text-align: center;
+      padding: 15px;
+      max-height: 70px;
+  }
+  #main-content
+  {
+      color: red;
+      background-color:#cec4ac;
+      text-align: center;
+      padding: 10px;
+      min-height: 650px;
+  }
+  #footer
+  {
+      background-color:#fac434;
+      color: coral;
+      text-align: center;
+      min-height: 50px;
+      padding: 10px;
+  }
+  #logo
+  {
+       clear:both;
+  }
+
+   #h1
+  {
+      float:left;
+      display:flex;
+      text-align: center;
+  }
+
+  img
+  {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 60px;
+  }
+</style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="h1">
+                <h1>Mniam-Mniam : Registration new restaurant</h1>
+            </div>
+            <a href="/dashboard">
+                <img src="/img/logo.png" alt="none" style="margin-right:12px">
+            </a>
+        </div>
+        <div id="main-content">
+            <br /><br /><br />
+            <div class="container">
+                <div class="row col-md-8 offset-md-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="text-center">Registration new restaurant</h2>
+                        </div>
+                        <div th:if="${param.success}">
+                            <div class="alert alert-info">
+                                You have successfully registered new restaurant!
+                            </div>
+                        </div>
+
+            <div class="card-body">
+                <form
+                    method="post"
+                    role="form"
+                    th:action="@{/register-restaurant/save}"
+                    th:object="${restaurant}"
+                >
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="form-label">Name</label>
+                            <input
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Enter name"
+                                th:field="*{name}"
+                                type="text"
+                            />
+                            <p th:errors = "*{name}" class="text-danger"
+                               th:if="${#fields.hasErrors('name')}"></p>
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-auto">
+                        <label class="form-label">Postal Code</label>
+                            <input
+                                class="form-control"
+                                id="postalCode"
+                                name="postalCode"
+                                placeholder="Enter postal code"
+                                th:field="*{postalCode}"
+                                type="text"
+                            />
+                            <p th:errors = "*{postalCode}" class="text-danger"
+                               th:if="${#fields.hasErrors('postalCode')}"></p>
+                        </div>
+                    </div>
+
+                        <div class="form-group col-auto">
+                            <label class="form-label">Street</label>
+                            <input
+                                class="form-control"
+                                id="street"
+                                name="street"
+                                placeholder="Enter street"
+                                th:field="*{street}"
+                                type="text"
+                            />
+                            <p th:errors = "*{street}" class="text-danger"
+                               th:if="${#fields.hasErrors('street')}"></p>
+                        </div>
+                    </div>
+
+                        <div class="form-group col-auto">
+                            <label class="form-label">City</label>
+                            <input
+                                class="form-control"
+                                id="city"
+                                name="city"
+                                placeholder="Enter city"
+                                th:field="*{city}"
+                                type="text"
+                            />
+                            <p th:errors = "*{city}" class="text-danger"
+                               th:if="${#fields.hasErrors('city')}"></p>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-auto">
+                                <label class="form-label">Country</label>
+                                    <select
+                                        class="form-control"
+                                        id="country"
+                                        name="country"
+                                        placeholder="Enter country"
+                                        th:field="*{country}">
+                                            <option th:value="'PL'" th:text="PL" selected></option>
+                                            <option th:value="'DE'" th:text="DE"></option>
+                                    </select>
+                                    <p th:errors = "*{country}" class="text-danger"
+                                       th:if="${#fields.hasErrors('country')}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group col-auto">
+                             <label class="form-label">Streets we delivery food</label>
+                            <input
+                                    class="form-control"
+                                    id="range"
+                                    name="range"
+                                    placeholder="Enter streets"
+                                    th:field="*{range}"
+                                    type="text"
+                            />
+                            <p th:errors = "*{range}" class="text-danger"
+                               th:if="${#fields.hasErrors('range')}"></p>
+                        </div>
+
+                        <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <div id="footer">
+        <h3>Footer of our application</h3>
+    </div>
+</div>
+</body>
+
+</html>

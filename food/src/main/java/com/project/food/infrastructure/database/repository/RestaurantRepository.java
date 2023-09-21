@@ -37,7 +37,7 @@ public class RestaurantRepository {
     }
 
     public void save(Restaurant restaurant, AddressEntity addressEntity, UserEntity userEntity) {
-        RestaurantEntity restaurantEntity= RestaurantEntity.builder()
+        RestaurantEntity restaurantEntity = RestaurantEntity.builder()
                 .restaurantId(restaurant.getRestaurantId())
                 .name(restaurant.getName())
                 .addressId(addressEntity)

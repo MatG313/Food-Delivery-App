@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>main-page-customer</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="main-page-for-customers" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+        #container
+    {
+        width:  1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #header
+    {
+        background-color: #fac434;
+        color: coral;
+        text-align: center;
+        padding: 15px;
+        max-height: 70px;
+    }
+    #main-content
+    {
+        float:left;
+        color: red;
+        background-color:#cec4ac;
+        text-align: center;
+        min-height: 650px;
+        width: 840px;
+        padding: 10px;
+    }
+    #nav
+    {
+        float: left;
+        background-color:#ef7542;
+        color: white;
+        text-align: center;
+        width: 120px;
+        min-height: 650px;
+        padding: 10px;
+    }
+    #footer
+    {
+        clear: both;
+        background-color:#fac434;
+        color: coral;
+        text-align: center;
+        min-height: 50px;
+        padding: 10px;
+    }
+    #logo
+    {
+         clear:both;
+    }
+
+     #h1
+    {
+        float:left;
+        display:flex;
+        text-align: center;
+    }
+
+    img
+    {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 60px;
+    }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <div id="h1">
+            <h1>Mniam-Mniam : User</h1>
+        </div>
+        <a href="/dashboard">
+            <img src="/img/logo.png" alt="none" style="margin-right:12px">
+        </a>
+    </div>
+    <div id="main-content">
+        <input id="restaurant-street" type="text"/>
+        <button onclick="findRestaurants()">search</button>
+        <h2> List of restaurants </h2>
+        <div>
+            <label th:each="restaurant: ${restaurants}">
+                <a th:href="@{'/restaurant-dashboard?id=' + ${restaurant.restaurantId}}">
+                    <button th:text="*{restaurant.name}" ></button><br/>
+                </a>
+            </label>
+        </div>
+    </div>
+    <div id="nav">
+        <h2>Your orders</h2>
+        <label th:each="order: ${orders}">
+            <span th:text="*{order.orderId} + *{order.status}" ></span>
+        </label>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <button onclick="location.href='/logout'">Logout</button>
+    </div>
+    <div id="footer">
+        <h3>Footer of our application</h3>
+    </div>
+
+</div>
+<script>
+    function findRestaurants(){
+       street = document.getElementById("restaurant-street").value;
+       window.location.href = "http://localhost:8080/dashboard" + "?street=" + street;
+    }
+</script>
+</body>
+
+</html>
